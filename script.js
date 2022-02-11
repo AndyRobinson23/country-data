@@ -2,10 +2,12 @@ const countriesEl = document.querySelector('.countries');
 const formEl = document.querySelector('.form');
 const formInputEl = document.querySelector('.form-row input');
 const btnEl = document.querySelector('.btn');
+const btnSearchEl = document.querySelector('.btn__search');
 
 const hideForm = function() {
     formEl.style.display = 'none';
     btnEl.style.display = 'none';
+    btnSearchEl.style.display = 'inline';
 }
 
 const futureData = fetch('https://restcountries.com/v3.1/name/peru');
@@ -58,12 +60,13 @@ const getCountryData = function(country) {
 
 }
 
-// getCountryData('ghana');
-
 btnEl.addEventListener('click', () => {
     getCountryData(formInputEl.value);
     hideForm();
 });
 
-// TODO: Add a button to allow the user to search again, clicking this refreshes the page
+btnSearchEl.addEventListener('click', () => {
+    location.reload()
+})
+
 // TODO: Find a way to deal with the fact the data is different for each country so you don't get any more undefined values on the product card
